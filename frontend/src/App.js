@@ -35,6 +35,7 @@ import Projects from "./pages/Projects";
 import CreateTask from "./pages/CreateTask";
 import ProjectTasks from "./pages/ProjectTasks";
 import Team from "./pages/Team";
+import { Navigate } from "react-router-dom";
 import "./styles.css";
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
       <Routes>
 
         {/* 🔥 AUTH ROUTES */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+    
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
