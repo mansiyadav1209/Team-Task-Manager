@@ -27,7 +27,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
+ALGORITHM = os.getenv("ALGORITHM","HS256")
 
 # ✅ switched from bcrypt → argon2 (NO 72-byte limit)
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")

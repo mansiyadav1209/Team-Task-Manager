@@ -175,8 +175,8 @@ Update task status
 
 
 🚀 Deployment
-- Backend: Railway / Render
-- Frontend: Vercel / Netlify
+- Backend: Railway 
+- Frontend: Netlify
 
 
 📌 Future Enhancements
