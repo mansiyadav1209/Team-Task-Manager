@@ -205,6 +205,7 @@ function Dashboard() {
 
   const role = localStorage.getItem("role");
   const userEmail = localStorage.getItem("email");
+  console.log(userEmail);
 
   // ✅ SAFE AUTH CHECK
   useEffect(() => {
@@ -220,52 +221,93 @@ function Dashboard() {
     navigate("/login", { replace: true });
   };
 
-  // ✅ FETCH TASKS
+  // // ✅ FETCH TASKS
+  // const fetchTasks = useCallback(async () => {
+  //   try {
+  //     const res = await API.get("/tasks");
+  //     let data = res.data;
+
+  //     const userId = Number(localStorage.getItem("userId"));
+
+  //     if (role === "Member") {
+  //       data = data.filter(task => task.assigned_to === userId);
+  //     }
+
+  //     setTasks(data);
+
+  //     let completed = 0, pending = 0, overdue = 0;
+  //     const today = new Date();
+
+  //     data.forEach(task => {
+  //       if (task.status === "Completed") completed++;
+  //       else pending++;
+
+  //       if (
+  //         task.due_date &&
+  //         new Date(task.due_date) < today &&
+  //         task.status !== "Completed"
+  //       ) {
+  //         overdue++;
+  //       }
+  //     });
+
+  //     setStats({
+  //       total: data.length,
+  //       completed,
+  //       pending,
+  //       overdue
+  //     });
+
+  //   } catch (err) {
+  //     console.log(err);
+  //     alert("Failed to fetch tasks");
+  //   }
+  // }, [role]);
+
+  // useEffect(() => {
+  //   fetchTasks();
+  // }, [fetchTasks]);
   const fetchTasks = useCallback(async () => {
-    try {
-      const res = await API.get("/tasks");
-      let data = res.data;
+  try {
+    const res = await API.get("/tasks");
+    let data = res.data;
 
-      const userId = Number(localStorage.getItem("userId"));
+    const userId = Number(localStorage.getItem("userId"));
 
-      if (role === "Member") {
-        data = data.filter(task => task.assigned_to === userId);
-      }
-
-      setTasks(data);
-
-      let completed = 0, pending = 0, overdue = 0;
-      const today = new Date();
-
-      data.forEach(task => {
-        if (task.status === "Completed") completed++;
-        else pending++;
-
-        if (
-          task.due_date &&
-          new Date(task.due_date) < today &&
-          task.status !== "Completed"
-        ) {
-          overdue++;
-        }
-      });
-
-      setStats({
-        total: data.length,
-        completed,
-        pending,
-        overdue
-      });
-
-    } catch (err) {
-      console.log(err);
-      alert("Failed to fetch tasks");
+    if (role === "Member") {
+      data = data.filter(task => task.assigned_to === userId);
     }
-  }, [role]);
 
-  useEffect(() => {
-    fetchTasks();
-  }, [fetchTasks]);
+    setTasks(data);
+
+    let completed = 0, pending = 0, overdue = 0;
+    const today = new Date();
+
+    data.forEach(task => {
+      if (task.status === "Completed") completed++;
+      else pending++;
+
+      if (
+        task.due_date &&
+        new Date(task.due_date) < today &&
+        task.status !== "Completed"
+      ) {
+        overdue++;
+      }
+    });
+
+    setStats({
+      total: data.length,
+      completed,
+      pending,
+      overdue
+    });
+
+  } catch (err) {
+    console.log(err);
+    alert("Failed to fetch tasks");
+  }
+}, [role]);
 
   const deleteTask = async (id) => {
     try {

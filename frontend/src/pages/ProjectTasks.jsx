@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback} from "react";
 import API from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -7,19 +7,31 @@ function ProjectTasks() {
   const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
 
-  const fetchTasks = async () => {
-    try {
-      const res = await API.get(`/projects/${projectId}/tasks`);
-      setTasks(res.data);
-    } catch (err) {
-      console.log(err);
-      alert("Failed to load tasks");
-    }
-  };
+  // const fetchTasks = async () => {
+  //   try {
+  //     const res = await API.get(`/projects/${projectId}/tasks`);
+  //     setTasks(res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //     alert("Failed to load tasks");
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchTasks();
-  }, [projectId]);
+  // useEffect(() => {
+  //   fetchTasks();
+  // }, [fetchTasks,projectId]);
+  const fetchTasks = useCallback(async () => {
+  try {
+    const res = await API.get(`/projects/${projectId}/tasks`);
+    setTasks(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+}, [projectId]);
+
+useEffect(() => {
+  fetchTasks();
+}, [fetchTasks]);
 
   return (
     <div style={{ padding: "20px" }}>

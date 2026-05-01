@@ -7,6 +7,20 @@ function Team() {
   const [members, setMembers] = useState([]);
   const navigate = useNavigate();
 
+  // const fetchTeam = async () => {
+  //   try {
+  //     const res = await API.get(`/projects/${projectId}`);
+  //     setMembers(res.data.members || []);
+  //   } catch (err) {
+  //     console.log(err);
+  //     alert("Failed to load team");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchTeam();
+  // }, [fetchTeam, projectId]);
+  useEffect(() => {
   const fetchTeam = async () => {
     try {
       const res = await API.get(`/projects/${projectId}`);
@@ -17,9 +31,8 @@ function Team() {
     }
   };
 
-  useEffect(() => {
-    fetchTeam();
-  }, [projectId]);
+  fetchTeam();
+}, [projectId]);
 
   return (
     <div style={{ padding: "20px" }}>
