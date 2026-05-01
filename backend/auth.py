@@ -21,9 +21,13 @@
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
+import os
+from dotenv import load_dotenv
 
-SECRET_KEY = "secret"
-ALGORITHM = "HS256"
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 # ✅ switched from bcrypt → argon2 (NO 72-byte limit)
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
