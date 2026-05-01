@@ -4,7 +4,10 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 function CreateTask() {
   const [projects, setProjects] = useState([]);
-  const [users, setUsers] = useState([]);
+
+  // eslint-disable-next-line no-unused-vars
+   const [users, setUsers] = useState([]);
+  
 
   const [form, setForm] = useState({
     title: "",
