@@ -48,16 +48,17 @@ ALGORITHM = "HS256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-def safe_password(password: str):
+def normalize_password(password: str) -> bytes:
+    # convert to UTF-8 bytes + enforce bcrypt limit
     return password.encode("utf-8")[:72]
 
 
 def hash_password(password: str):
-    return pwd_context.hash(safe_password(password))
+    return pwd_context.hash(normalize_password(password))
 
 
 def verify_password(plain, hashed):
-    return pwd_context.verify(safe_password(plain), hashed)
+    return pwd_context.verify(normalize_password(plain), hashed)
 
 
 def create_token(data: dict):
