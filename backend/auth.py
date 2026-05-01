@@ -18,10 +18,6 @@
 #     expire = datetime.utcnow() + timedelta(hours=10)
 #     to_encode.update({"exp": expire})
 #     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-<<<<<<< HEAD
-
-=======
->>>>>>> cecfe9da860cf5a96c0a8f3257e1e2794fdf44c2
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
@@ -45,9 +41,4 @@ def create_token(data: dict):
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(hours=10)
     to_encode.update({"exp": expire})
-<<<<<<< HEAD
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-=======
-    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-
->>>>>>> cecfe9da860cf5a96c0a8f3257e1e2794fdf44c2
