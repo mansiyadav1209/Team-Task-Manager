@@ -70,13 +70,17 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         print("SIGNUP ERROR:", e)
         raise HTTPException(status_code=500, detail=str(e))
 
-
 @router.post("/login")
 def login(user: Login, db: Session = Depends(get_db)):
     try:
+        print("LOGIN EMAIL:", user.email)
+        print("LOGIN PASSWORD:", user.password)
+
         db_user = db.query(User).filter(User.email == user.email).first()
+        print("USER FOUND:", db_user is not None)
 
         if not db_user or not verify_password(user.password, db_user.password):
+            print("PASSWORD MATCH FAILED")
             raise HTTPException(status_code=400, detail="Invalid credentials")
 
         token = create_token({"id": db_user.id})
@@ -91,3 +95,23 @@ def login(user: Login, db: Session = Depends(get_db)):
     except Exception as e:
         print("LOGIN ERROR:", e)
         raise HTTPException(status_code=500, detail=str(e))
+# @router.post("/login")
+# def login(user: Login, db: Session = Depends(get_db)):
+#     try:
+#         db_user = db.query(User).filter(User.email == user.email).first()
+
+#         if not db_user or not verify_password(user.password, db_user.password):
+#             raise HTTPException(status_code=400, detail="Invalid credentials")
+
+#         token = create_token({"id": db_user.id})
+
+#         return {
+#             "access_token": token,
+#             "role": db_user.role,
+#             "id": db_user.id,
+#             "email": db_user.email
+#         }
+
+#     except Exception as e:
+#         print("LOGIN ERROR:", e)
+#         raise HTTPException(status_code=500, detail=str(e))
