@@ -9,7 +9,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["majestic-daifuku-b39ae3.netlify.app"],  # allow React frontend
+    allow_origins=["https://magenta-cactus-58a7ca.netlify.app/"],  # allow React frontend
     allow_credentials=True,
     allow_methods=["*"],  # allow POST, GET, OPTIONS
     allow_headers=["*"],
