@@ -7,8 +7,4 @@ python-jose
 python-dotenv
 pydantic
 python-multipart
-<<<<<<< HEAD
 passlib[argon2]
-=======
-passlib[argon2]
->>>>>>> cecfe9da860cf5a96c0a8f3257e1e2794fdf44c2
