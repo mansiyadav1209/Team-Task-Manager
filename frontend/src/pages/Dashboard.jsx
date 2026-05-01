@@ -309,6 +309,10 @@ function Dashboard() {
   }
 }, [role]);
 
+useEffect(() => {
+  fetchTasks();
+}, [fetchTasks]);
+
   const deleteTask = async (id) => {
     try {
       await API.delete(`/tasks/${id}`);
