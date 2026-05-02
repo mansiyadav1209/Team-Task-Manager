@@ -175,8 +175,8 @@ Update task status
 
 
 🚀 Deployment
-- Backend: Railway 
-- Frontend: vercel
+- Backend: Railway    Live URL:https://team-task-manager-production-9720.up.railway.app
+- Frontend: vercel     Live URL:https://team-task-manager-psi-one.vercel.app
 
 
 📌 Future Enhancements
