@@ -7,8 +7,8 @@ A full-stack role-based project management system built using **FastAPI + React.
 ## 🚀 Live Demo
 > Add your deployed links here (Railway / Vercel)
 
-- Backend: `https://your-backend-url`
-- Frontend: `https://your-frontend-url`
+- Backend: `https://team-task-manager-production-9720.up.railway.app`
+- Frontend: `https://team-task-manager-psi-one.vercel.app`
 
 ---
 
