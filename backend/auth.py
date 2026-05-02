@@ -2,8 +2,13 @@
 # from jose import jwt
 # from datetime import datetime, timedelta
 
-# SECRET_KEY = "secret"
-# ALGORITHM = "HS256"
+# import os
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# SECRET_KEY = os.getenv("SECRET_KEY")
+# ALGORITHM = os.getenv("ALGORITHM") 
 
 # pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -26,8 +31,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
+SECRET_KEY = os.getenv("SECRET_KEY","se1cr2t")
+ALGORITHM = os.getenv("ALGORITHM","HS256")
 
 print("SECRET_KEY:", SECRET_KEY)
 print("ALGORITHM:", ALGORITHM)

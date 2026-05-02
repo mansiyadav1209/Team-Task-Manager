@@ -11,8 +11,8 @@ load_dotenv()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
+SECRET_KEY = os.getenv("SECRET_KEY","se1cr2t")
+ALGORITHM = os.getenv("ALGORITHM","HS256")
 
 def get_db():
     db = SessionLocal()
