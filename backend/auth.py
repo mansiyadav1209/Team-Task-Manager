@@ -26,8 +26,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY","secret123")
-ALGORITHM = os.getenv("ALGORITHM","HS256")
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 print("SECRET_KEY:", SECRET_KEY)
 print("ALGORITHM:", ALGORITHM)

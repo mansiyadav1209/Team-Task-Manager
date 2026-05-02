@@ -9,7 +9,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://magenta-cactus-58a7ca.netlify.app"],  # allow React frontend
+    allow_origins=["https://team-task-manager-psi-one.vercel.app"],  # allow React frontend
     allow_credentials=True,
     allow_methods=["*"],  # allow POST, GET, OPTIONS
     allow_headers=["*"],
